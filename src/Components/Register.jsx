@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import {
     Input,
     Ripple,
     initTE,
 } from "tw-elements";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify';
 const Register = () => {
     initTE({ Input, Ripple });
@@ -26,22 +27,23 @@ const Register = () => {
     const postData = async (e) => {
         e.preventDefault();
         const { name, email, password, cpassword } = user
-        const res = await fetch('http://localhost:5000/register', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name, email, password, cpassword
+
+
+        if (!name || !email || !password || !cpassword) {
+            toast.error("Please fill all the fields", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored"
             })
-        })
-        const data = await res.json()
-        if (!data || data.status === 422) {
-            window.alert("Something went wrong");
-        }
-        else {
-            if(!name || !email || !password || !cpassword){
-                toast.error("Please fill all the fields", {
+
+        } else {
+            if (password !== cpassword) {
+                toast.error("Password should be match", {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -51,10 +53,21 @@ const Register = () => {
                     progress: undefined,
                     theme: "colored"
                 })
+            } else {
 
-            }else{
-                if(password!==cpassword){
-                    toast.error("Password should be match", {
+                const res = await fetch('http://localhost:5000/register', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name, email, password, cpassword
+                    })
+                })
+                const data = await res.json()
+
+                if (data.status) {
+                    toast.error(data.status, {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -65,8 +78,8 @@ const Register = () => {
                         theme: "colored"
                     })
 
-
-                }else{
+                } else {
+                    localStorage.setItem('user',JSON.stringify({...data,name, password,email}))
                     toast.success("Register successfully", {
                         position: "top-right",
                         autoClose: 5000,
@@ -81,16 +94,10 @@ const Register = () => {
                     console.log("register successfully");
 
                 }
-                
-
             }
-             
-
         }
     }
 
-    const [isLoginMode, setIsLoginMode] = useState(true)
-    
     return (
         <>
             <section className="h-screen">
@@ -124,7 +131,7 @@ const Register = () => {
                                     >Your Name
                                     </label>
                                 </div>
-                                    
+
                                 <div className="relative mb-6" data-te-input-wrapper-init>
                                     <input
                                         type="text"
@@ -157,8 +164,8 @@ const Register = () => {
                                     >Password
                                     </label>
                                 </div>
-                                
-                            
+
+
                                 <div className="relative mb-6" data-te-input-wrapper-init>
                                     <input
                                         type="password"
@@ -174,8 +181,6 @@ const Register = () => {
                                     >Confirm password
                                     </label>
                                 </div>
-                                    
-
 
                                 <div className="text-center lg:text-left">
                                     <button
@@ -184,23 +189,13 @@ const Register = () => {
                                         className="inline-block bg-black hover:rounded-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                                         data-te-ripple-init
                                         data-te-ripple-color="dark">
-                                        {/* {isLoginMode ? 'LOGIN' : 'Register'} */}
                                         Register
                                     </button>
-                                    <a href="/Login" className='ml-4'>Already have an account?</a>
+                                    {/* <a href="/Login" className='ml-4'>Already have an account?</a> */}
+                                    <Link to="/Login" className='ml-4'>Already have an account?</Link>
 
 
                                 </div><br /><br />
-                                {/* <div className="text-center lg:text-left">
-                                    <button
-                                        onClick={Switchmode}
-                                        type="button"
-                                        className="inline-block bg-black hover:rounded-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                                        data-te-ripple-init
-                                        data-te-ripple-color="dark">
-                                        Switch to {isLoginMode ? 'Register' : 'Register'}
-                                    </button>
-                                </div> */}
                             </form>
                         </div>
                     </div>

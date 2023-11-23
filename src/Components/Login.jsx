@@ -4,6 +4,7 @@ import {
     Ripple,
     initTE,
 } from "tw-elements";
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
@@ -24,14 +25,12 @@ const Login = () => {
             },
             body: JSON.stringify({ email, password })
         })
+     
 
         const data = res.json()
+       
         if (res.status === 400 || !data) {
-
-
             toast.error("Invalid Credentials")
-
-
         } else {
             if (email !== email || password !== password) {
 
@@ -51,6 +50,7 @@ const Login = () => {
             }
             else {
                 dispatch({ type: "USER", payload: true })
+                localStorage.setItem('user',JSON.stringify({...data, password,email}))
                 toast.success("Login Successfully", {
                     position: "top-right",
                     autoClose: 5000,
@@ -85,9 +85,6 @@ const Login = () => {
                         <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
                             <form action="" method="POST">
                                 <h1 className='text-5xl flex justify-center mb-10'>Login</h1>
-
-
-
                                 <div className="relative mb-6 mt-8" data-te-input-wrapper-init>
 
                                     <input
@@ -127,11 +124,13 @@ const Login = () => {
 
 
 
-                                    <a href="#!" className='text-blue-400'>Forgot password?</a>
-                                    {/* {isLoginMode ? '' : 'Forgot password?'} */}
+                                    {/* <a href="/Reset" className='text-blue-400'>Forgot password?</a> */}
+                                    <Link to="/Reset" className='text-blue-400'>Forgot password?</Link>
+                          
                                 </div>
 
-                                <p className='flex justify-center'>Don't have an account?<a href="/Register">Register</a></p>
+                                {/* <p className='flex justify-center'>Don't have an account?<a href="/Register">Register</a></p> */}
+                                <p className='flex justify-center'>Don't have an account?<Link to="/Register">Register</Link></p>
 
                                 <button
                                     type="submit"
@@ -143,15 +142,6 @@ const Login = () => {
                                 </button>
 
                             </form>
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>

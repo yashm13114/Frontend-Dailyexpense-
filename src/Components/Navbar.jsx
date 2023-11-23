@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom'
 import {
   MdOutlineSpaceDashboard,
@@ -13,10 +13,11 @@ import { Disclosure } from "@headlessui/react";
 import { TiLockClosed } from "react-icons/ti";
 import { AiFillSetting } from "react-icons/ai";
 import { UserContext } from '../App';
-// import { RiLockPasswordLine } from 'react-icons/cg'
+import { AiOutlineLogin } from "react-icons/ai";
 const Navbar = () => {
 
   const { state, dispatch } = useContext(UserContext)
+ 
 
   const RendeMenu = () => {
     if (state) {
@@ -27,39 +28,44 @@ const Navbar = () => {
               <h1 className="text-base text-center cursor-pointer font-bold text-black border-b border-gray-100 pb-4 w-full">
                 Menu
               </h1>
-              <div className=" my-4 border-b border-gray-100 pb-4">
+              <div className="my-4 border-b border-gray-100 pb-4">
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                  <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
+                  <MdOutlineSpaceDashboard className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white " />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                    <a href="/Dashboard">Dashboard</a>
+                    {/* <a href="/Dashboard">Dashboard</a> */}
+                    <Link to="/Dashboard">Dashboard</Link>
                   </h3>
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
                   <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <FaCirclePlus className="text-xl text-gray-600 group-hover:text-white " />
-                    <a href="/Changeexpense" className='ml-4'>Add Expense</a>
+                    <FaCirclePlus className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white " />
+                    {/* <a href="/Changeexpense" className='ml-4'>Add Expense</a> */}
+                    <Link to="/AddExpense" className='ml-4'>Add Expense</Link>
                   </h3>
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
                   <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <AiFillSetting className="text-2xl text-gray-600 group-hover:text-white mr-4" />
-                    <a href="/ManageExpense" className=''>Manage Expense</a>
+                    <AiFillSetting className="lg:text-2xl md:text-2xl text-4xl text-gray-600 group-hover:text-white mr-4" />
+                    {/* <a href="/ManageExpense" className=''>Manage Expense</a> */}
+                    <Link to="/ManageExpense" className=''>Manage Expense</Link>
                   </h3>
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                   {/* <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " /> */}
                   <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <TiLockClosed className="text-2xl text-gray-600 group-hover:text-white mr-3" />
+                    <TiLockClosed className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white mr-3" />
                     {/* <RiLockPasswordLine /> */}
-                    Change Password
+                    
+                    <Link to="/Reset" className=''>Change Password</Link>
                   </h3>
                 </div>
                 <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                   <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                    <a href="/Profile">Profile</a>
+                    {/* <a href="/Profile">Profile</a> */}
+                    <Link to="/Profile">Profile</Link>
 
                   </h3>
                 </div>
@@ -72,7 +78,8 @@ const Navbar = () => {
                   <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
 
-                    <a href="/Logout">Logout</a>
+          
+                    <Link to="/Logout">Logout</Link>
                   </h3>
                 </div>
 
@@ -82,48 +89,54 @@ const Navbar = () => {
         </>
       )
     } else {
-      
-      
+     
+    
       return (
+
         <>
+     
           <div className="p-6 w-1/2 h-screen bg-white z-20 fixed top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
             <div className="flex flex-col justify-start item-center">
               <h1 className="text-base text-center cursor-pointer font-bold text-black border-b border-gray-100 pb-4 w-full">
                 Menu
               </h1>
+            
               <div className=" my-4 border-b border-gray-100 pb-4">
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                  <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
-                  <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                    <a href="/">Dashboard</a>
+                  <MdOutlineSpaceDashboard className="lg:text-2xl md:text-3xl text-3xl text-gray-600 group-hover:text-white " />
+                  <h3 className="text-base text-gray-800 group-hover:text-white font-semibold " >
+                    <a href="">Dashboard</a>
                   </h3>
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
-                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
+                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold " >
                     <FaCirclePlus className="text-xl text-gray-600 group-hover:text-white " />
-                    <a href="/" className='ml-4'>Add Expense</a>
+                    {/* <a href="" className='ml-4'>Add Expense</a> */}
+                    <Link href="" className='ml-4'>Add Expense</Link>
+                  </h3>
+                </div>
+                <div  className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+
+                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold " >
+                    <AiFillSetting className="lg:text-2xl md:text-2xl text-4xl text-gray-600 group-hover:text-white mr-4" />
+                    {/* <a href="" className=''>Manage Expense</a> */}
+                    <Link href="" className=''>Manage Expense</Link>
                   </h3>
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
                   <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <AiFillSetting className="text-2xl text-gray-600 group-hover:text-white mr-4" />
-                    <a href="/" className=''>Manage Expense</a>
+                    <AiOutlineLogin className="text-2xl text-gray-600 group-hover:text-white mr-4" />
+                    {/* <a href="/Register" className=''>Login/Register</a> */}
+                    <Link to="/Register" className=''>Login/Register</Link>
                   </h3>
                 </div>
-                <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
-                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <AiFillSetting className="text-2xl text-gray-600 group-hover:text-white mr-4" />
-                    <a href="/Register" className=''>Login/Register</a>
-                  </h3>
-                </div>
-              
 
               </div>
 
-             
+
             </div>
           </div>
         </>
@@ -143,8 +156,7 @@ const Navbar = () => {
           <h1 >Daily Expense Tracker</h1>
         </div>
         <RendeMenu />
-
-
+ 
       </Disclosure>
 
     </div>
