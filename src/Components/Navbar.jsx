@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import { toast } from 'react-toastify';
 import { CgProfile } from "react-icons/cg";
+import { SiGoogleanalytics } from "react-icons/si";
 import { FaCirclePlus } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
@@ -14,23 +15,24 @@ import { TiLockClosed } from "react-icons/ti";
 import { AiFillSetting } from "react-icons/ai";
 import { UserContext } from '../App';
 import { AiOutlineLogin } from "react-icons/ai";
+import { RxDashboard } from "react-icons/rx";
 const Navbar = () => {
 
   const { state, dispatch } = useContext(UserContext)
- 
+
 
   const RendeMenu = () => {
     if (state) {
       return (
         <>
-          <div className="p-6 w-1/2 h-screen bg-white z-20 fixed top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+          <div className=" p-6 w-1/2 h-screen bg-white z-20 fixed top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
             <div className="flex flex-col justify-start item-center">
               <h1 className="text-base text-center cursor-pointer font-bold text-black border-b border-gray-100 pb-4 w-full">
                 Menu
               </h1>
               <div className="my-4 border-b border-gray-100 pb-4">
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                  <MdOutlineSpaceDashboard className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white " />
+                  <RxDashboard  className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white "  />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
                     {/* <a href="/Dashboard">Dashboard</a> */}
                     <Link to="/Dashboard">Dashboard</Link>
@@ -52,23 +54,15 @@ const Navbar = () => {
                     <Link to="/ManageExpense" className=''>Manage Expense</Link>
                   </h3>
                 </div>
-                <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                  {/* <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " /> */}
-                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
-                    <TiLockClosed className="lg:text-2xl md:text-2xl text-3xl text-gray-600 group-hover:text-white mr-3" />
-                    {/* <RiLockPasswordLine /> */}
-                    
-                    <Link to="/Reset" className=''>Change Password</Link>
-                  </h3>
-                </div>
-                <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                  <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
+
+                {/* <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                  <SiGoogleanalytics  className="text-2xl text-gray-600 group-hover:text-white " />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                    {/* <a href="/Profile">Profile</a> */}
-                    <Link to="/Profile">Profile</Link>
+                
+                    <Link to="/">Analytics</Link>
 
                   </h3>
-                </div>
+                </div> */}
 
               </div>
 
@@ -78,7 +72,7 @@ const Navbar = () => {
                   <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
                   <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
 
-          
+
                     <Link to="/Logout">Logout</Link>
                   </h3>
                 </div>
@@ -89,18 +83,18 @@ const Navbar = () => {
         </>
       )
     } else {
-     
-    
+
+
       return (
 
         <>
-     
+
           <div className="p-6 w-1/2 h-screen bg-white z-20 fixed top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
             <div className="flex flex-col justify-start item-center">
               <h1 className="text-base text-center cursor-pointer font-bold text-black border-b border-gray-100 pb-4 w-full">
                 Menu
               </h1>
-            
+
               <div className=" my-4 border-b border-gray-100 pb-4">
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                   <MdOutlineSpaceDashboard className="lg:text-2xl md:text-3xl text-3xl text-gray-600 group-hover:text-white " />
@@ -126,7 +120,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
 
-                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold ">
+                  <h3 className="text-base flex text-gray-800 group-hover:text-white font-semibold pr-7">
                     <AiOutlineLogin className="text-2xl text-gray-600 group-hover:text-white mr-4" />
                     {/* <a href="/Register" className=''>Login/Register</a> */}
                     <Link to="/Register" className=''>Login/Register</Link>
@@ -156,7 +150,7 @@ const Navbar = () => {
           <h1 >Daily Expense Tracker</h1>
         </div>
         <RendeMenu />
- 
+
       </Disclosure>
 
     </div>
@@ -164,3 +158,6 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+

@@ -12,6 +12,9 @@ import Reset from './Components/Reset'
 import { initialState, reducer } from './Reducer/UserReducer'
 import Home from './Components/Home'
 import AddExpense from './Components/AddExpense'
+import ForgotPass from './Components/ForgotPass'
+import Analytics from './Components/Analytics'
+import AnalyticsExpense from './Components/AnalyticsExpense'
 export const UserContext = createContext()
 const Routnig = () => {
   return (
@@ -24,10 +27,12 @@ const Routnig = () => {
         <Route path="/Changeexpense" element={<Changeexpense />} />
         <Route path="/AddExpense" element={<AddExpense />} />
         <Route path="/ManageExpense" element={<ManageExpense />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Profile/:id" element={<Profile />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Logout" element={<Logout />} />
         <Route path="/Reset" element={<Reset />} />
+        <Route path="/Analytics" element={<Analytics />} />
+        <Route path="/ForgotPass" element={<ForgotPass />} />
 
       </Routes>
     </BrowserRouter>
@@ -41,9 +46,6 @@ function App() {
       
         <Routnig />
       </UserContext.Provider>
-
-
-
 
     </>
   )

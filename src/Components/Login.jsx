@@ -51,7 +51,7 @@ const Login = () => {
             else {
                 dispatch({ type: "USER", payload: true })
                 localStorage.setItem('user',JSON.stringify({...data, password,email}))
-                toast.success("Login Successfully", {
+                toast.success("Login Successfully 🤩", {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -77,8 +77,9 @@ const Login = () => {
                         className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
                         <div
                             className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
+                         
                             <img
-                                src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
+                                src="https://cdn.dribbble.com/users/2500979/screenshots/6486096/dribbble_gif_login.gif"
                                 className="w-96 lg:block hidden  mx-auto"
                                 alt="Sample image" />
                         </div>
