@@ -242,16 +242,7 @@ const ManageExpense = () => {
                     <button onClick={() => setUpdateForm(null)}>Cancel</button>
                 </div>
             )}
-            {/* <div className=' lg:flex lg:justify-center  mt-10'>
-                <Form form={form} component={false}>
-
-                    <div className='lg:w-full sm:w-0 lg:flex lg:justify-center mt-10'>
-                        <Table dataSource={allTransactions} columns={columns} />
-                    </div>
-                </Form>
-
-
-            </div> */}
+           
             <div className='lg:flex lg:justify-center mt-10'>
                 <Form form={form} component={false}>
                     <div className='overflow-x-auto'>
@@ -259,11 +250,7 @@ const ManageExpense = () => {
                     </div>
                 </Form>
             </div>
-            {/* <div>
-                <Analytics allTransactions={allTransactions} />
-
-                
-            </div> */}
+         
 
 
 

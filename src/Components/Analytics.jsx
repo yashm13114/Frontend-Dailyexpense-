@@ -31,7 +31,7 @@ const Analytics = ({ allTransactions }) => {
     return (
         <>
             <div className='grid justify-center'>
-                <div className='lg:flex lg:justify-evenly inline-block justify-evenly'>
+                <div className='lg:flex lg:justify-evenly inline-block justify-evenly '>
                     <div className=' '>
                         <div className='text-2xl'>
                             Total-Transaction: {totalTransaction}
@@ -39,8 +39,10 @@ const Analytics = ({ allTransactions }) => {
                         <div>
                             <h5 className='text-green-600 text-3xl font-bold'>Income: {totalIncomeTransaction.length}</h5>
                             <h5 className='text-red-600 text-3xl font-bold mb-10'>Expense: {totalExpenseTransaction.length}</h5>
-                            <Progress className='mr-10' type='circle' strokeColor={'green'} percent={totalIncomePercent.toFixed(0)} />
-                            <Progress className='mr-10' type='circle' strokeColor={'red'} percent={totalExpensePercent.toFixed(0)} />
+                            <div className='lg:flex-auto lg:justify-center flex justify-evenly'>
+                                <Progress className='mr-10' type='circle' strokeColor={'green'} percent={totalIncomePercent.toFixed(0)} />
+                                <Progress className='mr-10' type='circle' strokeColor={'red'} percent={totalExpensePercent.toFixed(0)} />
+                            </div>
                         </div>
                         <div className='mt-10'>
                             <h4 className='text-2xl mb-6'>Category wise Income</h4>
@@ -69,8 +71,10 @@ const Analytics = ({ allTransactions }) => {
                         <div>
                             <h5 className='text-green-600 text-3xl font-bold'>Income: {totalIncomeTurnover}</h5>
                             <h5 className='text-red-600 text-3xl font-bold mb-10'>Expense: {totalExpenseTurnover}</h5>
-                            <Progress className='mr-10' type='circle' strokeColor={'green'} percent={totalIncomeTurnoverPercent.toFixed(0)} />
-                            <Progress className='mr-10' type='circle' strokeColor={'red'} percent={totalExpenseTurnoverPercent.toFixed(0)} />
+                            <div className='lg:flex-auto lg:justify-center flex justify-evenly '>
+                                <Progress className='mr-10' type='circle' strokeColor={'green'} percent={totalIncomeTurnoverPercent.toFixed(0)} />
+                                <Progress className='mr-10' type='circle' strokeColor={'red'} percent={totalExpenseTurnoverPercent.toFixed(0)} />
+                            </div>
                         </div>
                         <div className='mt-10'>
                             <h4 className='text-2xl mb-6'>Category wise Expense</h4>
@@ -96,7 +100,7 @@ const Analytics = ({ allTransactions }) => {
 
 
 
-                
+
             </div>
         </>
     )
