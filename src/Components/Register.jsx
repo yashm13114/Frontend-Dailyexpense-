@@ -79,7 +79,7 @@ const Register = () => {
                     })
 
                 } else {
-                    localStorage.setItem('user',JSON.stringify({...data,name, password,email}))
+                    localStorage.setItem('user', JSON.stringify({ ...data, name, password, email }))
                     toast.success("Register successfully", {
                         position: "top-right",
                         autoClose: 5000,
@@ -100,7 +100,7 @@ const Register = () => {
 
     return (
         <>
-            <section className="h-screen">
+            <section className="h-screen lg:p-0 md:p-0 p-5">
                 <div className="h-full pr-2">
 
                     <div
@@ -183,16 +183,26 @@ const Register = () => {
                                 </div>
 
                                 <div className="text-center lg:text-left">
-                                    <button
+                                    {/* <button
                                         type="submit"
                                         onClick={postData}
                                         className="inline-block bg-black hover:rounded-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                                         data-te-ripple-init
                                         data-te-ripple-color="dark">
                                         Register
-                                    </button>
+                                    </button> */}
+                                    <div className='flex justify-start'>
+                                        <button
+                                            type="submit"
+                                            onClick={postData}
+                                            className="relative w-52 px-8 py-2 rounded-md bg-white isolation-auto z-10 border-2 border-black before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-black hover:text-white before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+                                        >
+                                            Register
+                                        </button>
+                                        <Link to="/Login" className='ml-4 grid justify-center items-center'>Already have an account?</Link>
+                                    </div>
                                     {/* <a href="/Login" className='ml-4'>Already have an account?</a> */}
-                                    <Link to="/Login" className='ml-4'>Already have an account?</Link>
+                                  
 
 
                                 </div><br /><br />

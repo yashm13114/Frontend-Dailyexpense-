@@ -25,10 +25,10 @@ const Login = () => {
             },
             body: JSON.stringify({ email, password })
         })
-     
+
 
         const data = res.json()
-       
+
         if (res.status === 400 || !data) {
             toast.error("Invalid Credentials")
         } else {
@@ -50,7 +50,7 @@ const Login = () => {
             }
             else {
                 dispatch({ type: "USER", payload: true })
-                localStorage.setItem('user',JSON.stringify({...data, password,email}))
+                localStorage.setItem('user', JSON.stringify({ ...data, password, email }))
                 toast.success("Login Successfully 🤩", {
                     position: "top-right",
                     autoClose: 5000,
@@ -77,7 +77,7 @@ const Login = () => {
                         className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
                         <div
                             className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
-                         
+
                             <img
                                 src="https://cdn.dribbble.com/users/2500979/screenshots/6486096/dribbble_gif_login.gif"
                                 className="w-96 lg:block hidden  mx-auto"
@@ -120,27 +120,28 @@ const Login = () => {
                                     >Password
                                     </label>
                                 </div>
-                                
+
                                 <div className="mb-6 flex items-center justify-between">
 
 
 
                                     {/* <a href="/Reset" className='text-blue-400'>Forgot password?</a> */}
                                     <Link to="/Reset" className='text-blue-400'>Forgot password?</Link>
-                          
+
                                 </div>
 
                                 {/* <p className='flex justify-center'>Don't have an account?<a href="/Register">Register</a></p> */}
                                 <p className='flex justify-center'>Don't have an account?<Link to="/Register">Register</Link></p>
 
-                                <button
-                                    type="submit"
-                                    onClick={LoginUser}
-                                    className="hover:rounded-full inline-block ml-52 w-1/3  rounded bg-black px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                                    data-te-ripple-init
-                                    data-te-ripple-color="light">
-                                    login
-                                </button>
+                                <div className='grid justify-center'>
+                                    <button
+                                        type="submit"
+                                        onClick={LoginUser}
+                                        className="relative w-52 px-8 py-2 rounded-md bg-white isolation-auto z-10 border-2 border-black before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-black hover:text-white before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+                                    >
+                                        Login
+                                    </button>
+                                </div>
 
                             </form>
                         </div>
